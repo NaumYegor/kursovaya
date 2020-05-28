@@ -39,7 +39,6 @@ namespace WindowsFormsApp1
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
-            Console.WriteLine(table);
 
             if (table.Rows.Count > 0)
             {

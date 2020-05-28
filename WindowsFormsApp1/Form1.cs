@@ -36,11 +36,6 @@ namespace WindowsFormsApp1
             user.Authorize(user.UserData);
         }
 
-        private void passwordLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonMake_Click(object sender, EventArgs e)
         {
             RegForm makeForm = new RegForm();
@@ -49,5 +44,9 @@ namespace WindowsFormsApp1
             return;
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
