@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,23 +28,12 @@ namespace WindowsFormsApp1
             String openKey = loginBox.Text;
             String privateKey = passwordBox.Text;
 
-            DB db = new DB();
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("openKey", openKey);
+            data.Add("privateKey", privateKey);
 
-            DataTable table = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `openKey` = @oKey AND `privateKey` = @pKey", db.getConnection());
-            command.Parameters.Add("@oKey", MySqlDbType.VarChar).Value = openKey;
-            command.Parameters.Add("@pKey", MySqlDbType.VarChar).Value = privateKey;
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("YES");
-            }
-            else MessageBox.Show("NO");
+            User user = new User(data);
+            user.Authorize(user.UserData);
         }
 
         private void passwordLabel_Click(object sender, EventArgs e)

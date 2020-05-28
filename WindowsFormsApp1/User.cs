@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace WindowsFormsApp1
 {
@@ -20,6 +21,33 @@ namespace WindowsFormsApp1
         public User(Dictionary<string, string> income)
         {
             UserData = income;
+        }
+
+        public bool Authorize (Dictionary<string, string> data)
+        {
+
+            string openKey = data["openKey"];
+            string privateKey = data["privateKey"];
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `openKey` = @oKey AND `privateKey` = @pKey", db.getConnection());
+            command.Parameters.Add("@oKey", MySqlDbType.VarChar).Value = openKey;
+            command.Parameters.Add("@pKey", MySqlDbType.VarChar).Value = privateKey;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            Console.WriteLine(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("YES");
+                return true;
+            }
+            else MessageBox.Show("NO");
+            return false;
         }
 
         public void MakeNewUser(Dictionary<string, string> data, RegForm form)
