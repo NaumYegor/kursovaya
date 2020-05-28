@@ -264,7 +264,7 @@
         private System.Windows.Forms.Label FScoreLabel;
         private System.Windows.Forms.Label SScoreLabel;
         private System.Windows.Forms.Label ThScoreLabel;
-        private System.Windows.Forms.TextBox OpenKeyBox;
-        private System.Windows.Forms.TextBox privateKeyBox;
+        internal System.Windows.Forms.TextBox OpenKeyBox;
+        internal System.Windows.Forms.TextBox privateKeyBox;
     }
 }

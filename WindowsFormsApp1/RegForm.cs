@@ -28,8 +28,6 @@ namespace WindowsFormsApp1
 
         private void buttonCreateUser_Click(object sender, EventArgs e)
         {
-            Regex regexNames = new Regex("[А-я]");
-            Regex regexScores = new Regex("[0-9]");
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("firstName", fNameBox.Text);
             data.Add("middleName", mNameBox.Text);
@@ -37,49 +35,15 @@ namespace WindowsFormsApp1
             data.Add("score1", score1Box.Text);
             data.Add("score2", score2Box.Text);
             data.Add("score3", score3Box.Text);
-            foreach (KeyValuePair<string, string> kvp in data) {
-                if (kvp.Key.StartsWith("score"))
-                {
-                    if (!Validate(kvp.Value, regexScores, "Score")) return;
-                } else
-                {
-                    if (!Validate(kvp.Value, regexNames, "Name")) return;
-                }
+
+            User user = new User (data);
+            if (!user.Validate(user.UserData))
+            {
+                return;
             }
 
-            string openKey = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-            string privateKey = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-            string insertionCommand = "INSERT into `users` (`fName`, `mName`, `lName`," +
-                                       " `Score1`, `Score2`, `Score3`, `account`," +
-                                       " `openKey`, `privateKey`)" +
-                                       " VALUES (@f, @m, @l, @s1, @s2, @s3, @a, @o, @p)";
-            Console.WriteLine(insertionCommand);
+            user.MakeNewUser(user.UserData, this);
 
-            DB db = new DB();
-            MySqlCommand command = new MySqlCommand(insertionCommand, db.getConnection());
-            command.Parameters.Add("@f", MySqlDbType.VarChar).Value = data["firstName"];
-            command.Parameters.Add("@m", MySqlDbType.VarChar).Value = data["middleName"];
-            command.Parameters.Add("@l", MySqlDbType.VarChar).Value = data["lName"];
-            command.Parameters.Add("@s1", MySqlDbType.Int16).Value = data["score1"];
-            command.Parameters.Add("@s2", MySqlDbType.Int16).Value = data["score2"];
-            command.Parameters.Add("@s3", MySqlDbType.Int16).Value = data["score3"];
-            command.Parameters.Add("@a", MySqlDbType.VarChar).Value = "user";
-            command.Parameters.Add("@o", MySqlDbType.VarChar).Value = openKey;
-            command.Parameters.Add("@p", MySqlDbType.VarChar).Value = privateKey;
-
-            db.openConnection();
-
-            if (command.ExecuteNonQuery() == 1)
-            {
-                MessageBox.Show("Ok");
-                OpenKeyBox.Text = openKey;
-                privateKeyBox.Text = privateKey;
-            } else
-            {
-                MessageBox.Show("Не получилось создать.");
-            }
-
-            db.closeConnection();
             return;
         }
 

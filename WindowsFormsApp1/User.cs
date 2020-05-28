@@ -5,18 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsApp1
 {
     class User
     {
 
-        public User()
-        {
+        public Dictionary<string, string> UserData { get; private set; }
+        private MatchCollection matches;
+        readonly Regex regexNames = new Regex("[А-я]");
+        readonly Regex regexScores = new Regex("[0-9]");
 
+        public User(Dictionary<string, string> income)
+        {
+            UserData = income;
         }
 
-        private void MakeNewUser(Dictionary<string, string> data, RegForm form)
+        public void MakeNewUser(Dictionary<string, string> data, RegForm form)
         {
             string openKey = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
             string privateKey = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
@@ -51,6 +57,40 @@ namespace WindowsFormsApp1
             }
 
             db.closeConnection();
+            return;
+        }
+
+        public bool Validate(Dictionary<string, string> data)
+        {
+            foreach (KeyValuePair<string, string> kvp in data)
+            {
+                if (kvp.Key.StartsWith("score"))
+                {
+                    if (!RegexCheck(kvp.Value, regexScores, "Score")) return false;
+                }
+                else
+                {
+                    if (!RegexCheck(kvp.Value, regexNames, "Name")) return false;
+                }
+            }
+            return true;
+        }
+
+        private bool RegexCheck(string data, Regex regexp, string type)
+        {
+            if (data.Length < 1) return false;
+            matches = regexp.Matches(data);
+            if (matches.Count != data.Length)
+            {
+                MessageBox.Show($"{data}\nWrong data!");
+                return false;
+            }
+            if (type == "Score" && Convert.ToInt32(data) > 200)
+            {
+                MessageBox.Show($"{data}\nWrong data!");
+                return false;
+            }
+            return true;
         }
 
     }
