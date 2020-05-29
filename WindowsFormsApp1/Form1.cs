@@ -28,12 +28,14 @@ namespace WindowsFormsApp1
             String openKey = loginBox.Text;
             String privateKey = passwordBox.Text;
 
-            Dictionary<string, string> data = new Dictionary<string, string>();
-            data.Add("openKey", openKey);
-            data.Add("privateKey", privateKey);
+            Dictionary<string, string> data = new Dictionary<string, string>
+            {
+                { "openKey", openKey },
+                { "privateKey", privateKey }
+            };
 
             User user = new User(data);
-            user.Authorize(user.UserData);
+            user.Authorize(user.UserData, this);
         }
 
         private void buttonMake_Click(object sender, EventArgs e)

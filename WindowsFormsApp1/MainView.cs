@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
         {
             if (listView1.SelectedItems.Count==0)
             {
-                MessageBox.Show("Сасать баяцца");
+                MessageBox.Show("Нононо");
                 return;
             }
 

@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             UserData = income;
         }
 
-        public bool Authorize (Dictionary<string, string> data)
+        public bool Authorize (Dictionary<string, string> data, Form thisForm)
         {
 
             string openKey = data["openKey"];
@@ -43,6 +43,12 @@ namespace WindowsFormsApp1
             if (table.Rows.Count > 0)
             {
                 MessageBox.Show("YES");
+                if (table.Rows[0][6].Equals("admin"))
+                {
+                    AddSpecialization form = new AddSpecialization();
+                    form.Show();
+                    thisForm.Hide();
+                }
                 return true;
             }
             else MessageBox.Show("NO");
