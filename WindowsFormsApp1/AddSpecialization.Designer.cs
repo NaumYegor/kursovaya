@@ -235,6 +235,7 @@
             this.Controls.Add(this.HeaderAdd);
             this.Name = "AddSpecialization";
             this.Text = "AddSpecialization";
+            this.Load += new System.EventHandler(this.AddSpecialization_Load);
             this.AddSpecLabel.ResumeLayout(false);
             this.AddSpecLabel.PerformLayout();
             this.ResumeLayout(false);

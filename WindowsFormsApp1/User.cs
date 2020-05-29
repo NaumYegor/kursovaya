@@ -13,14 +13,14 @@ namespace WindowsFormsApp1
     class User
     {
 
-        public Dictionary<string, string> UserData { get; private set; }
+      
         private MatchCollection matches;
         readonly Regex regexNames = new Regex("[А-я]");
         readonly Regex regexScores = new Regex("[0-9]");
 
-        public User(Dictionary<string, string> income)
+        public User()
         {
-            UserData = income;
+
         }
 
         public bool Authorize (Dictionary<string, string> data, Form thisForm)
@@ -42,13 +42,14 @@ namespace WindowsFormsApp1
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("YES");
                 if (table.Rows[0][6].Equals("admin"))
                 {
                     AddSpecialization form = new AddSpecialization();
                     form.Show();
                     thisForm.Hide();
+                    return true;
                 }
+                this.ViewList(thisForm, openKey);
                 return true;
             }
             else MessageBox.Show("NO");
@@ -124,6 +125,27 @@ namespace WindowsFormsApp1
                 return false;
             }
             return true;
+        }
+
+        public void ViewList(Form form, string openKey)
+        {
+            form.Hide();
+            MainView view = new MainView(openKey);
+            view.Show();
+        }
+        public void ViewApplicants(Form form)
+        {
+            form.Hide();
+        }
+
+        override public string ToString()
+        {
+            return "User";
+        }
+
+        virtual public string GetID()
+        {
+            return null;
         }
 
     }

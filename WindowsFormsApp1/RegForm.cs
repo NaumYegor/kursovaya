@@ -15,7 +15,6 @@ namespace WindowsFormsApp1
 {
     public partial class RegForm : Form
     {
-        readonly MatchCollection matches;
         public RegForm()
         {
             InitializeComponent();
@@ -33,13 +32,13 @@ namespace WindowsFormsApp1
                 { "score3", score3Box.Text }
             };
 
-            User user = new User (data);
-            if (!user.Validate(user.UserData))
+            User user = new User ();
+            if (!user.Validate(data))
             {
                 return;
             }
 
-            user.MakeNewUser(user.UserData, this);
+            user.MakeNewUser(data, this);
 
             return;
         }

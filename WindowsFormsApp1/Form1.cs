@@ -34,8 +34,8 @@ namespace WindowsFormsApp1
                 { "privateKey", privateKey }
             };
 
-            User user = new User(data);
-            user.Authorize(user.UserData, this);
+            User user = new User();
+            user.Authorize(data, this);
         }
 
         private void buttonMake_Click(object sender, EventArgs e)
@@ -45,10 +45,11 @@ namespace WindowsFormsApp1
             this.Hide();
             return;
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void buttonUnknown_Click(object sender, EventArgs e)
         {
-
+            User user = new User();
+            user.ViewList(this, null);
+            return;
         }
     }
 }

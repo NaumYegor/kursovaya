@@ -116,6 +116,7 @@
             this.buttonUnknown.TabIndex = 6;
             this.buttonUnknown.Text = "Нет ключа";
             this.buttonUnknown.UseVisualStyleBackColor = true;
+            this.buttonUnknown.Click += new System.EventHandler(this.buttonUnknown_Click);
             // 
             // buttonMake
             // 
@@ -157,7 +158,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(163, 195);
             this.tableLayoutPanel1.TabIndex = 8;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // welcomeForm
             // 

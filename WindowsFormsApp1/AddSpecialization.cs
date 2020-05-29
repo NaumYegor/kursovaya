@@ -34,7 +34,12 @@ namespace WindowsFormsApp1
         private void Exit_Click(object sender, EventArgs e)
         {
             this.Close();
-            Application.Exit();
+            new welcomeForm().Show();
+        }
+
+        private void AddSpecialization_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

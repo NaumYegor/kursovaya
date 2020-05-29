@@ -28,20 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.SpecializationsView = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.showContent = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ApplyButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // SpecializationsView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.SpecializationsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader6,
             this.columnHeader0,
             this.columnHeader1,
@@ -49,16 +52,22 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(32, 61);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(740, 343);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.SpecializationsView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpecializationsView.FullRowSelect = true;
+            this.SpecializationsView.GridLines = true;
+            this.SpecializationsView.HideSelection = false;
+            this.SpecializationsView.Location = new System.Drawing.Point(3, 89);
+            this.SpecializationsView.MultiSelect = false;
+            this.SpecializationsView.Name = "SpecializationsView";
+            this.SpecializationsView.Size = new System.Drawing.Size(746, 340);
+            this.SpecializationsView.TabIndex = 0;
+            this.SpecializationsView.UseCompatibleStateImageBehavior = false;
+            this.SpecializationsView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "ID";
+            this.columnHeader6.Width = 33;
             // 
             // columnHeader0
             // 
@@ -90,38 +99,65 @@
             // 
             this.columnHeader5.Text = "Цена";
             // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "ID";
-            this.columnHeader6.Width = 33;
-            // 
             // showContent
             // 
-            this.showContent.Location = new System.Drawing.Point(697, 32);
+            this.showContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.showContent.Location = new System.Drawing.Point(3, 3);
             this.showContent.Name = "showContent";
-            this.showContent.Size = new System.Drawing.Size(75, 23);
+            this.showContent.Size = new System.Drawing.Size(746, 37);
             this.showContent.TabIndex = 1;
             this.showContent.Text = "Показать";
             this.showContent.UseVisualStyleBackColor = true;
             this.showContent.Click += new System.EventHandler(this.showContent_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.showContent, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SpecializationsView, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.ApplyButton, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(752, 432);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // ApplyButton
+            // 
+            this.ApplyButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ApplyButton.Location = new System.Drawing.Point(3, 46);
+            this.ApplyButton.Name = "ApplyButton";
+            this.ApplyButton.Size = new System.Drawing.Size(746, 37);
+            this.ApplyButton.TabIndex = 2;
+            this.ApplyButton.Text = "Подать";
+            this.ApplyButton.UseVisualStyleBackColor = true;
+            this.ApplyButton.Click += new System.EventHandler(this.ApplyButton_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 451);
-            this.Controls.Add(this.showContent);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(752, 432);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainView";
             this.Text = "MainView";
             this.Load += new System.EventHandler(this.MainView_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView SpecializationsView;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader0;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -130,5 +166,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button showContent;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button ApplyButton;
     }
 }
