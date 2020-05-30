@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show($"{data}\nWrong data!");
                 return false;
             }
-            if (type == "Score" && Convert.ToInt32(data) > 200)
+            if (type == "Score" && (data.StartsWith("0") || Convert.ToInt32(data) > 200 || Convert.ToInt32(data) <100))
             {
                 MessageBox.Show($"{data}\nWrong data!");
                 return false;

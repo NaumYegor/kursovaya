@@ -56,11 +56,17 @@ namespace WindowsFormsApp1
 
         public bool ValidateStrings()
         {
+            Regex regex = new Regex("[А-я]");
             foreach (KeyValuePair<string, string> kvp in Info)
             {
                 if (Info[kvp.Key].Length < 1)
                 {
                     MessageBox.Show($"{kvp.Key} is empty, set it!");
+                    return false;
+                }
+                if (regex.Matches(Info[kvp.Key]).Count != Info[kvp.Key].Length && kvp.Key!="Price")
+                {
+                    MessageBox.Show($"Только кириллица : {kvp.Key}:{kvp.Value}");
                     return false;
                 }
             }

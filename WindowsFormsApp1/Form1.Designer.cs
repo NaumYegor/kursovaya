@@ -49,7 +49,7 @@
             this.welcomeLabel.Location = new System.Drawing.Point(0, 0);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(0);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(658, 27);
+            this.welcomeLabel.Size = new System.Drawing.Size(759, 27);
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = "Вход в программу";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,9 +57,9 @@
             // buttonSigned
             // 
             this.buttonSigned.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSigned.Location = new System.Drawing.Point(3, 112);
+            this.buttonSigned.Location = new System.Drawing.Point(3, 124);
             this.buttonSigned.Name = "buttonSigned";
-            this.buttonSigned.Size = new System.Drawing.Size(157, 22);
+            this.buttonSigned.Size = new System.Drawing.Size(258, 25);
             this.buttonSigned.TabIndex = 1;
             this.buttonSigned.Text = "Начать работу";
             this.buttonSigned.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             // 
             this.loginBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginBox.Location = new System.Drawing.Point(31, 31);
+            this.loginBox.Location = new System.Drawing.Point(82, 36);
             this.loginBox.MaximumSize = new System.Drawing.Size(133, 28);
             this.loginBox.Name = "loginBox";
             this.loginBox.Size = new System.Drawing.Size(100, 22);
@@ -79,7 +79,7 @@
             // 
             this.passwordBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordBox.Location = new System.Drawing.Point(31, 83);
+            this.passwordBox.Location = new System.Drawing.Point(82, 94);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(100, 22);
@@ -90,7 +90,7 @@
             this.loginLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginLabel.Location = new System.Drawing.Point(32, 13);
+            this.loginLabel.Location = new System.Drawing.Point(82, 16);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(99, 15);
             this.loginLabel.TabIndex = 4;
@@ -101,7 +101,7 @@
             this.passwordLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordLabel.Location = new System.Drawing.Point(32, 65);
+            this.passwordLabel.Location = new System.Drawing.Point(83, 74);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(98, 15);
             this.passwordLabel.TabIndex = 5;
@@ -110,9 +110,9 @@
             // buttonUnknown
             // 
             this.buttonUnknown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonUnknown.Location = new System.Drawing.Point(3, 168);
+            this.buttonUnknown.Location = new System.Drawing.Point(3, 186);
             this.buttonUnknown.Name = "buttonUnknown";
-            this.buttonUnknown.Size = new System.Drawing.Size(157, 24);
+            this.buttonUnknown.Size = new System.Drawing.Size(258, 27);
             this.buttonUnknown.TabIndex = 6;
             this.buttonUnknown.Text = "Нет ключа";
             this.buttonUnknown.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@
             // buttonMake
             // 
             this.buttonMake.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonMake.Location = new System.Drawing.Point(3, 140);
+            this.buttonMake.Location = new System.Drawing.Point(3, 155);
             this.buttonMake.Name = "buttonMake";
-            this.buttonMake.Size = new System.Drawing.Size(157, 22);
+            this.buttonMake.Size = new System.Drawing.Size(258, 25);
             this.buttonMake.TabIndex = 7;
             this.buttonMake.Text = "Зарегистрировать";
             this.buttonMake.UseVisualStyleBackColor = true;
@@ -156,15 +156,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(163, 195);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(264, 216);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // welcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(658, 391);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(759, 417);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.welcomeLabel);
             this.MaximumSize = new System.Drawing.Size(800, 571);
