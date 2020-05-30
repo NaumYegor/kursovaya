@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
+using System.Runtime.Remoting.Messaging;
+using System.Data;
 
 namespace WindowsFormsApp1
 {
@@ -99,6 +101,37 @@ namespace WindowsFormsApp1
             }
 
             db.closeConnection();
+        }
+
+        public ListViewItem[] AllAdded()
+        {
+            DB db = new DB();
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `specializations`", db.getConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+
+            ListViewItem[] answer = new ListViewItem[table.Rows.Count];
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                DataRow data = table.Rows[i];
+                string[] row = {
+                    data.Field<Int32>("id").ToString(),
+                    data.Field<String>("City"),
+                    data.Field<String>("School"),
+                    data.Field<String>("Faculty"),
+                    data.Field<String>("Specialization"),
+                    data.Field<String>("StudyType"),
+                    data.Field<Int32>("Price").ToString(),
+                };
+                answer[i] = new ListViewItem(row);
+            }
+            return answer;
         }
     }
 }

@@ -113,6 +113,7 @@
             this.backButton.TabIndex = 2;
             this.backButton.Text = "Назад";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // Information
             // 
@@ -122,6 +123,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Information";
             this.Text = "Information";
+            this.Load += new System.EventHandler(this.Information_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

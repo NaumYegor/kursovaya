@@ -12,9 +12,24 @@ namespace WindowsFormsApp1
 {
     public partial class Information : Form
     {
-        public Information()
+
+        public string SpecializationId;
+        public Information(string specId)
         {
+            SpecializationId = specId;
             InitializeComponent();
+        }
+
+        private void Information_Load(object sender, EventArgs e)
+        {
+            ApplicationReq application = new ApplicationReq(SpecializationId, null);
+            DetailListView.Items.AddRange(application.ListById());
+            return;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

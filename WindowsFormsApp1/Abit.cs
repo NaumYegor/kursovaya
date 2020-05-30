@@ -41,7 +41,6 @@ namespace WindowsFormsApp1
             {
                 DataRow row = table.Rows[0];
                 string id = row[0].ToString();
-                MessageBox.Show(id);
                 if (row.IsNull("id"))
                     MessageBox.Show("Id is Null");
                 return row[0].ToString();

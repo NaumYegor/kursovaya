@@ -68,5 +68,27 @@ namespace WindowsFormsApp1
                 return true;
             return false;
         }
+
+        public ListViewItem[] ListById()
+        {
+            DB db = new DB();
+            DataTable tableUserIDs = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT userId FROM `applications` WHERE `specializationId` = @specId", db.getConnection());
+            command.Parameters.Add("@specId", MySqlDbType.Int32).Value = Convert.ToInt32(SpecializationId);
+
+            adapter.SelectCommand = command;
+            adapter.Fill(tableUserIDs);
+            ListViewItem[] answer = new ListViewItem[tableUserIDs.Rows.Count];
+
+            for (int i=0; i<tableUserIDs.Rows.Count; i++)
+            {
+                User user = new User();
+                answer[i] = user.GetById(tableUserIDs.Rows[i].Field<Int32>("userId"));
+            }
+
+            return answer;
+        }
     }
 }

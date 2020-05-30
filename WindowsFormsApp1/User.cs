@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using System.Data;
+using MySqlX.XDevAPI.Relational;
 
 namespace WindowsFormsApp1
 {
@@ -146,6 +147,32 @@ namespace WindowsFormsApp1
         virtual public string GetID()
         {
             return null;
+        }
+
+        public ListViewItem GetById(int id)
+        {
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            string commandString = "SELECT fName, mName, lName, Score1, Score2, Score3 FROM `users` WHERE `id` = @id";
+            MySqlCommand command = new MySqlCommand(commandString, db.getConnection());
+            command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            ListViewItem answer;
+
+            string[] row = new string[table.Rows[0].ItemArray.Length];
+            for (int j=0; j<table.Rows[0].ItemArray.Length; j++)
+            {
+                row[j] = table.Rows[0].ItemArray[j].ToString();
+            }
+
+            answer = new ListViewItem(row);
+            return answer;
+
         }
 
     }

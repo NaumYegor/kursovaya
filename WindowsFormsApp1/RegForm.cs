@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             User user = new User ();
             if (!user.Validate(data))
             {
+                MessageBox.Show("Для ФИО разреша только русская кириллица. Для баллов ЗНО - числа меньше 200.");
                 return;
             }
 

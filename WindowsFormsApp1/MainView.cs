@@ -27,29 +27,8 @@ namespace WindowsFormsApp1
 
         private void MainView_Load(object sender, EventArgs e)
         {
-            DB db = new DB();
-            DataTable table = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `specializations`", db.getConnection());
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            for (int i=0; i<table.Rows.Count; i++)
-            {
-                DataRow data = table.Rows[i];
-                string[] row = {
-                    data.Field<Int32>("id").ToString(),
-                    data.Field<String>("City"),
-                    data.Field<String>("School"),
-                    data.Field<String>("Faculty"),
-                    data.Field<String>("Specialization"),
-                    data.Field<String>("StudyType"),
-                    data.Field<Int32>("Price").ToString(),
-                };
-                SpecializationsView.Items.Add(new ListViewItem(row));
-            }
+            Specialization specialization = new Specialization();
+            SpecializationsView.Items.AddRange(specialization.AllAdded());
             return;
         }
 
@@ -60,9 +39,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Вы не выбрали поле!");
                 return;
             }
-
-            MessageBox.Show(SpecializationsView.SelectedItems[0].SubItems[0].Text);
-            Information form = new Information();
+            string specId = SpecializationsView.SelectedItems[0].SubItems[0].Text;
+            Information form = new Information(specId);
             form.Show();
         }
 
